@@ -57,7 +57,12 @@ RSpec/Rails/InferredSpecType:
   Enabled: false
 
 Style/Documentation:
-  Enabled: false
+  Exclude:
+    - app/helpers/application_helper.rb
+    - app/mailers/application_mailer.rb
+    - app/models/application_record.rb
+    - config/application.rb
+    - db/migrate/*.rb
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes

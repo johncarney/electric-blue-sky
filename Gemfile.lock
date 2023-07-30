@@ -66,6 +66,9 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
+    annotate (3.2.0)
+      activerecord (>= 3.2, < 8.0)
+      rake (>= 10.4, < 14.0)
     arel-helpers (2.14.0)
       activerecord (>= 3.1.0, < 8)
     ast (2.4.2)
@@ -278,6 +281,7 @@ PLATFORMS
   aarch64-linux
 
 DEPENDENCIES
+  annotate
   arel-helpers
   awesome_print
   bootsnap
