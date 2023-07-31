@@ -49,13 +49,11 @@ RSpec.describe PostRecordSerializer do
 
       it "serializes the CBOR::Tagged object with a base64 encoded value" do # rubocop:todo RSpec/ExampleLength
         expected_record = record.deep_dup
-        expected_record.dig("embed", "images", 0, "image").merge!(
-          "ref" => {
-            "$type" => "CBOR::Tagged",
-            "tag"   => cbor_tagged.tag,
-            "value" => Base64.encode64(cbor_tagged.value)
-          }
-        )
+        expected_record.dig("embed", "images", 0, "image")["ref"] = {
+          "$type" => "CBOR::Tagged",
+          "tag"   => cbor_tagged.tag,
+          "value" => Base64.encode64(cbor_tagged.value)
+        }
         expect(serialized_record).to eq expected_record
       end
     end
