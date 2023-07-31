@@ -34,7 +34,8 @@ Provide a Bluesky feed of recent TTRPG-related posts.
 
 ### Possible future requirements
 
-- Custom user feeds for an arbitrary set of topics
+- Support languages other than English.
+- Custom user feeds for an arbitrary set of topics.
 - The ability to exclude topics from custom feeds.
 - Historical statistics.
 - A web interface for viewing statistics.

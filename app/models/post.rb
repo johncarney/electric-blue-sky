@@ -16,6 +16,8 @@
 # A Bluesky post
 #
 class Post < ApplicationRecord
+  has_many :texts, inverse_of: :post, dependent: :destroy, autosave: true
+
   serialize :record, PostRecordSerializer
 
   validates :uri, :repo, presence: true

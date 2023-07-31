@@ -12,8 +12,6 @@ class CreatePosts < ActiveRecord::Migration[7.0]
       t.jsonb  :record, null: false, default: {}, index: { using: :gin, opclass: :jsonb_path_ops }
 
       t.timestamps
-
-      # t.index "((record ->> 'text')) gin_trgm_ops", name: :index_posts_on_record_text, using: :gin
     end
   end
 end

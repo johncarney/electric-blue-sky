@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_25_042512) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_31_033548) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
@@ -26,4 +26,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_042512) do
     t.index ["uri"], name: "index_posts_on_uri", unique: true
   end
 
+  create_table "texts", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.string "text_type", null: false
+    t.text "text", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_texts_on_post_id"
+    t.index ["text"], name: "index_texts_on_text", opclass: :gin_trgm_ops, using: :gin
+  end
+
+  add_foreign_key "texts", "posts"
 end
