@@ -23,5 +23,23 @@ FactoryBot.define do
     record do
       { text: }
     end
+
+    trait :with_image_alt_texts do
+      record do
+        {
+          text:,
+          embed: { images: Array.new(2) { { alt: Faker::Lorem.sentence } } }
+        }
+      end
+    end
+
+    trait :with_media_alt_texts do
+      record do
+        {
+          text:,
+          embed: { media: { images: Array.new(2) { { alt: Faker::Lorem.sentence } } } }
+        }
+      end
+    end
   end
 end
