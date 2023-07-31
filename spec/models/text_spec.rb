@@ -6,8 +6,8 @@
 #
 #  id         :bigint           not null, primary key
 #  post_id    :bigint           not null
-#  type       :string           not null
-#  text       :text             not null
+#  text_type  :string           not null
+#  text       :citext           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
