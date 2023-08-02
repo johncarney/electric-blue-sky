@@ -18,7 +18,7 @@ RSpec.describe Term, type: :model do
 
   it { is_expected.to belong_to(:topic).inverse_of(:terms) }
   it { is_expected.to validate_presence_of(:pattern) }
-  it { is_expected.to validate_uniqueness_of(:pattern).scoped_to(:topic_id) }
+  it { is_expected.to validate_uniqueness_of(:pattern) }
 
   it "validates that :pattern is a valid regular expression", :aggregate_failures do
     expect(build(:term, pattern: "[")).not_to be_valid

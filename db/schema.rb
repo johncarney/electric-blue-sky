@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_02_020859) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_02_051402) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "pg_trgm"
@@ -40,7 +40,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_02_020859) do
     t.boolean "ambiguous", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["topic_id", "pattern"], name: "index_terms_on_topic_id_and_pattern", unique: true
+    t.index ["pattern"], name: "index_terms_on_pattern", unique: true
     t.index ["topic_id"], name: "index_terms_on_topic_id"
   end
 

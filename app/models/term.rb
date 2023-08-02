@@ -16,7 +16,7 @@ class Term < ApplicationRecord
 
   scope :matching, ->(term) { where("? ~* CONCAT('\\A', pattern, '\\Z')", term) }
 
-  validates :pattern, presence: true, uniqueness: { scope: :topic_id }
+  validates :pattern, presence: true, uniqueness: true
 
   validate :pattern_is_valid_regex
 
