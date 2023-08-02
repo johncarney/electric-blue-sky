@@ -367,7 +367,7 @@ Game system:
     - ['C[&n]C', *the-rpg]
     - Coyote\s*(&|and)\s*Crow
     ambiguous_matches:
-    - C[&n]C
+    - C&C
 
   Cyberpunk:
     tags: system
