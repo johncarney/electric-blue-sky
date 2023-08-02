@@ -14,6 +14,8 @@
 class Term < ApplicationRecord
   belongs_to :topic, inverse_of: :terms
 
+  scope :matching, ->(term) { where("? ~* CONCAT('\\A', pattern, '\\Z')", term) }
+
   validates :pattern, presence: true, uniqueness: { scope: :topic_id }
 
   validate :pattern_is_valid_regex
