@@ -12,6 +12,7 @@ RSpec.describe TopicChanges do
       topic = build :topic, name: topic_name
       attrs[:matches].each { |pattern| topic.terms.build(pattern:, ambiguous: false) }
       attrs[:ambiguous_matches].each { |pattern| topic.terms.build(pattern:, ambiguous: true) }
+      attrs[:tags].each { |name| topic.topic_tags.build(tag: build(:tag, name:)) }
       topic
     end
 
@@ -19,10 +20,11 @@ RSpec.describe TopicChanges do
 
     let(:attrs) do
       # Looks like Faker's "unique" method doesn't work as expected
-      words = Faker::Lorem.unique.words(number: 6).uniq
+      words = Faker::Lorem.unique.words(number: 9).uniq
       {
         matches:           words[0...3],
-        ambiguous_matches: words[3...]
+        ambiguous_matches: words[3...6],
+        tags:              words[6...]
       }
     end
 
@@ -38,8 +40,13 @@ RSpec.describe TopicChanges do
       it { is_expected.to include("Creating #{topic_name}...") }
 
       it "includes the added terms" do
-        added_terms = attrs.values.flatten.sort
-        expect(change_messages).to include("  Adding #{'term'.pluralize(added_terms.size)}: #{added_terms.join(', ')}")
+        added_terms = attrs[:matches] + attrs[:ambiguous_matches]
+        expect(change_messages).to include("  Adding #{'term'.pluralize(added_terms.size)}: #{added_terms.sort.join(', ')}")
+      end
+
+      it "includes the added tags" do
+        added_tags = attrs[:tags].sort
+        expect(change_messages).to include("  Adding #{'tag'.pluralize(added_tags.size)}: #{added_tags.join(', ')}")
       end
     end
 
@@ -69,6 +76,17 @@ RSpec.describe TopicChanges do
         changed_term = topic.terms.select(&:ambiguous).sample
         changed_term.ambiguous = false
         expect(change_messages).to include("  Updating term to unambiguous: #{changed_term.pattern}")
+      end
+
+      it "includes added tags" do
+        topic.topic_tags.build(tag: build(:tag, name: "added tag"))
+        expect(change_messages).to include("  Adding tag: added tag")
+      end
+
+      it "includes removed tags" do
+        removed_association = topic.topic_tags.sample
+        removed_association.mark_for_destruction
+        expect(change_messages).to include("  Removing tag: #{removed_association.tag.name}")
       end
     end
   end

@@ -12,10 +12,11 @@ RSpec.describe TopicBuilder do
 
     let(:attrs) do
       # Looks like Faker's "unique" method doesn't work as expected
-      words = Faker::Lorem.unique.words(number: 6).uniq
+      words = Faker::Lorem.unique.words(number: 9).uniq
       {
         matches:           words[0...3],
-        ambiguous_matches: words[3...]
+        ambiguous_matches: words[3...6],
+        tags:              words[6...]
       }
     end
 
@@ -34,7 +35,7 @@ RSpec.describe TopicBuilder do
 
       it "builds the topic's terms" do
         term_patterns = seeded_topic.terms.map(&:pattern)
-        expect(term_patterns).to match_array attrs.values.flatten
+        expect(term_patterns).to match_array(attrs[:matches] + attrs[:ambiguous_matches])
       end
 
       it "does not persist the topic's terms" do
@@ -49,6 +50,16 @@ RSpec.describe TopicBuilder do
       it %(marks ambiguous matches as "ambiguous") do
         ambiguous_terms = seeded_topic.terms.select(&:ambiguous?)
         expect(ambiguous_terms.map(&:pattern)).to match_array attrs[:ambiguous_matches]
+      end
+
+      it "builds the topic's tags" do
+        tag_names = seeded_topic.topic_tags.map(&:tag).map(&:name)
+        expect(tag_names).to match_array(attrs[:tags])
+      end
+
+      it "does not persist the topic's tags" do
+        seeded_tags = seeded_topic.topic_tags.map(&:tag)
+        expect(seeded_tags).not_to be_any(&:persisted?)
       end
     end
 
@@ -128,6 +139,48 @@ RSpec.describe TopicBuilder do
         it "marks the term for destruction" do
           term = seeded_topic.terms.find { |t| t.pattern == removed_term.pattern }
           expect(term).to be_marked_for_destruction
+        end
+      end
+
+      context "when one of the topic's tags already exists, but not associated with the topic" do
+        let(:existing_tag) { build :tag, name: attrs[:tags].sample }
+
+        before do
+          existing_tag.save!
+        end
+
+        it "adds the existing tag to the topic" do
+          topic_tag = seeded_topic.topic_tags.find { |tt| tt.tag.name == existing_tag.name }
+          expect(topic_tag.tag).to eq existing_tag
+        end
+      end
+
+      context "when one of the topic's tags already exists and is associated with the topic" do
+        let(:existing_tag) { build :tag, name: attrs[:tags].sample }
+
+        before do
+          existing_tag.save!
+          topic.tags << existing_tag
+        end
+
+        it "uses the existing association" do
+          topic_tag = seeded_topic.topic_tags.find { |tt| tt.tag.name == existing_tag.name }
+          expect(topic_tag).not_to be_changed
+        end
+      end
+
+      context "when one of the topic's tags is removed" do
+        let(:existing_tag) { build :tag, name: attrs[:tags].sample }
+
+        before do
+          existing_tag.save!
+          topic.tags << existing_tag
+          attrs[:tags].delete(existing_tag.name)
+        end
+
+        it "marks the association for destruction" do
+          topic_tag = seeded_topic.topic_tags.find { |tt| tt.tag.name == existing_tag.name }
+          expect(topic_tag).to be_marked_for_destruction
         end
       end
     end

@@ -20,7 +20,9 @@ class TopicChanges
       added_terms,
       removed_terms,
       updated_terms_to_ambiguous,
-      updated_terms_to_unambiguous
+      updated_terms_to_unambiguous,
+      added_tags,
+      removed_tags
     ].compact
   end
 
@@ -61,5 +63,21 @@ class TopicChanges
     return unless updated.any?
 
     "  Updating #{'term'.pluralize(updated.size)} to unambiguous: #{updated.map(&:pattern).join(', ')}"
+  end
+
+  def added_tags
+    added = topic.topic_tags.select(&:new_record?).map(&:tag)
+    return unless added.any?
+
+    added_names = added.map(&:name).sort
+    "  Adding #{'tag'.pluralize(added.size)}: #{added_names.join(', ')}"
+  end
+
+  def removed_tags
+    removed = topic.topic_tags.select(&:marked_for_destruction?)
+    return unless removed.any?
+
+    removed_names = removed.map(&:tag).map(&:name).sort
+    "  Removing #{'tag'.pluralize(removed.size)}: #{removed_names.join(', ')}"
   end
 end

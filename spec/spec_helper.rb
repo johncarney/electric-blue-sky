@@ -22,7 +22,7 @@ if ENV["COVERAGE"] != "NO"
   SimpleCov.start "rails" do
     add_filter         %w[spec/ config/ db/]
     coverage_criterion :branch
-    minimum_coverage   88
+    minimum_coverage   90
   end
 end
 
