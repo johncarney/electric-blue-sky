@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_31_154735) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_02_001606) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "pg_trgm"
@@ -35,6 +35,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_154735) do
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_texts_on_post_id"
     t.index ["text"], name: "index_texts_on_text", opclass: :gin_trgm_ops, using: :gin
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.citext "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_topics_on_name", unique: true
   end
 
   add_foreign_key "texts", "posts"
