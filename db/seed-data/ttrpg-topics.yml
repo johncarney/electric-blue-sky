@@ -1,8 +1,7 @@
 ---
 
 .macros:
-  - &the-rpg      (\s*:)?(\s*the)?\s*RPG
-  - &optional-rpg ((\s*:)?(\s*the)?\s*RPG)?
+  - &the-rpg (\s*:)?(\s*the)?\s*RPG
 
 General topic:
   TTRPG feed meta-discussion:
@@ -111,7 +110,7 @@ Game system:
   Candela Obscura RPG:
     tags: system
     matches:
-    - Candela\s*Obscura(\s*:)?(\s*the)?RPG
+    - [Candela\s*Obscura, *the-rpg]
 
   CY_BORG:
     tags: system
@@ -131,12 +130,12 @@ Game system:
   Delta Green:
     tags: system
     matches:
-    - Delta\s*Green((\s*:)?RPG)?
+    - Delta\s*Green
 
   DragonQuest:
     tags: system
     matches:
-    - DragonQuest((\s*:)?\s*RPG)?
+    - DragonQuest
 
   Dungeon Crawl Classics:
     tags: system
@@ -152,12 +151,12 @@ Game system:
   EZD6:
     tags: system
     matches:
-    - EZ\s*D6((\s*:)?RPG)?
+    - EZ\s*D6
 
   F.A.T.A.L.:
     tags: [system, problematic]
     matches:
-    - F\.?A\.?T\.?A\.?L\.?(\s*:)?\s*RPG
+    - ['F\.?A\.?T\.?A\.?L\.?', *the-rpg]
     - F\.A\.T\.A\.L\.?
 
   Fantasy AGE:
@@ -179,7 +178,7 @@ Game system:
   Gamma World:
     tags: system
     matches:
-    - Gamma\s*World(RPG)?
+    - Gamma\s*World
 
   Illuminated Worlds:
     tags: system
@@ -194,14 +193,14 @@ Game system:
   Lamentations of the Flame Princess:
     tags: system
     matches:
-    - Lamentations\s*of\s*the\s*Flame\s*Princess((\s*:)?RPG)?
-    - LoftFP((\s*:)?RPG)?
+    - Lamentations\s*of\s*the\s*Flame\s*Princess
+    - LoftFP
 
   Neoclassical Geek Revival:
     tags: system
     matches:
-    - NGR((\s*:)?RPG)?
-    - Neoclassical\s*Geek\s*Revival((\s*:)?RPG)?
+    - NGR
+    - Neoclassical\s*Geek\s*Revival
 
   Old School Essentials:
     tags: system
@@ -224,12 +223,12 @@ Game system:
   Public Access:
     tags: system
     matches:
-    - '#?Public\s*Access(\s*:)?(\s*the)?\s*RPG'
+    - [Public\s*Access, *the-rpg]
 
   RuneQuest:
     tags: system
     matches:
-    - RuneQuest((\s*:)?RPG)?
+    - RuneQuest
 
   Savage Worlds:
     tags: system
@@ -240,7 +239,7 @@ Game system:
   Shadowdark:
     tags: system
     matches:
-    - Shadowdark(RPG)?
+    - Shadowdark
 
   Star Frontiers:
     tags: system
@@ -250,7 +249,7 @@ Game system:
   Starfinder:
     tags: system
     matches:
-    - Starfinder(RPG)?
+    - Starfinder
 
   Stars Without Number:
     tags: system
@@ -260,7 +259,7 @@ Game system:
   Symbaroum:
     tags: system
     matches:
-    - Symbaroum(RPG)?
+    - Symbaroum
 
   Tunnels & Trolls:
     tags: system
@@ -270,7 +269,7 @@ Game system:
   'Twilight: 2000':
     tags: system
     matches:
-    - Twilight:?\s*2000(RPG)?
+    - Twilight:?\s*2000
 
   Urban Shadows:
     tags: system
@@ -280,7 +279,7 @@ Game system:
   Vaesen:
     tags: system
     matches:
-    - Vaesen(RPG)?
+    - Vaesen
 
   "Vampire: the Masquerade":
     tags: system
@@ -292,12 +291,12 @@ Game system:
   Vast Grimm:
     tags: system
     matches:
-    - Vast\s*Grimm(\s*RPG)?
+    - Vast\s*Grimm
 
   Wanderhome:
     tags: system
     matches:
-    - Wanderhome((\s*:)?\s*RPG)?
+    - Wanderhome
 
   World of Dungeons:
     tags: system
@@ -312,7 +311,7 @@ Game system:
   Zweihänder:
     tags: system
     matches:
-    - Zweih[aä]nder(\s*:)?\s*RPG
+    - ['Zweih[aä]nder', *the-rpg]
     ambiguous_matches:
     - Zweih[aä]nder
 
@@ -329,14 +328,14 @@ Game system:
   Alien:
     tags: system
     matches:
-    - Alien(\s*:)?\s*RPG
+    - [Alien, *the-rpg]
     ambiguous_matches:
     - Alien
 
   Bladerunner:
     tags: system
     matches:
-    - Bladerunner(\s*:)?(\s*the)?\s*RPG
+    - [Bladerunner, *the-rpg]
     ambiguous_matches:
     - Bladerunner
 
@@ -344,7 +343,7 @@ Game system:
     tags: system
     matches:
     - Blue\s*Planet(\s*:)?\s*Recontact
-    - Blue\s*Planet(\s*:)?(\s*the)?\s*RPG
+    - [Blue\s*Planet, *the-rpg]
     ambiguous_matches:
     - Blue\s*Planet
 
@@ -365,8 +364,8 @@ Game system:
   Coyote & Crow:
     tags: system
     matches:
-    - C[&n]C(\s*:)?\s*RPG
-    - Coyote\s*(&|and)\s*Crow((\s*:)?\s*RPG)?
+    - ['C[&n]C', *the-rpg]
+    - Coyote\s*(&|and)\s*Crow
     ambiguous_matches:
     - C[&n]C
 
@@ -380,21 +379,21 @@ Game system:
   Death in Space:
     tags: system
     matches:
-    - Death\s*in\s*Space(\s*:)?\s*RPG
+    - [Death\s*in\s*Space, *the-rpg]
     ambiguous_matches:
     - Death\s*in\s*Space
 
   Daggerheart:
     tags: system
     matches:
-    - Daggerheart(\s*:)?\s*RPG
+    - [Daggerheart, *the-rpg]
     ambiguous_matches:
     - Daggerheart
 
   Dragonbane:
     tags: system
     matches:
-    - Dragonbane(\s*:)?\s*RPG
+    - [Dragonbane, *the-rpg]
     ambiguous_matches:
     - Dragonbane
 
@@ -402,8 +401,8 @@ Game system:
     tags: system
     matches:
     - (Five|5)\s*Torches\s*Deep
-    - 5TD(RPG)?
-    - FTD(\s*:)?\s*RPG
+    - 5TD
+    - [FTD, *the-rpg]
     ambiguous_matches:
     - FTD
 
@@ -417,7 +416,7 @@ Game system:
   Lancer:
     tags: system
     matches:
-    - Lancer(\s*:)?\s*RPG
+    - [Lancer, *the-rpg]
     ambiguous_matches:
     - Lancer
 
@@ -425,7 +424,7 @@ Game system:
     tags: system
     matches:
     - Lord\s*of\s*the\s*Rings(\s*:)?\s*(RPG|Roleplaying|5E)
-    - LotR(\s*:)?\s*RPG
+    - [LotR, *the-rpg]
     ambiguous_matches:
     - Lord\s*of\s*the\s*Rings(RPG|Roleplaying|5E)?
     - LotR
@@ -433,7 +432,7 @@ Game system:
   Paranoia:
     tags: system
     matches:
-    - Paranoia(\s*:)?\s*RPG
+    - [Paranoia, *the-rpg]
     ambiguous_matches:
     - Paranoia
 
@@ -448,7 +447,7 @@ Game system:
   Root:
     tags: system
     matches:
-    - Root(\s*:)?(\s*the)?\s*RPG
+    - [Root, *the-rpg]
     ambiguous_matches:
     - Root
 
@@ -456,15 +455,15 @@ Game system:
     tags: system
     matches:
     - Shadowrun(?!(\s*[-:—])*\s*(Dragonfall|Hong\s*Kong|Returns|SNES|Sega\*Genesis))
-    - Shadowrun(\s*:)?\s*RPG
+    - [Shadowrun, *the-rpg]
     ambiguous_matches:
     - Shadowrun
 
   Tales from the Loop:
     tags: system
     matches:
-    - Tales\s*from\s*the\s*Loop(\s*:)?\s*RPG
-    - TftL(\s*:)?\s*RPG
+    - [Tales\s*from\s*the\s*Loop, *the-rpg]
+    - [TftL, *the-rpg]
     ambiguous_matches:
     - Tales\s*from\s*the\s*Loop
     - TftL
@@ -472,27 +471,27 @@ Game system:
   Tales of the Valiant:
     tags: system
     matches:
-    - Tales\s*of(\s*the)?\s*Valiant((\s*:)?\s*RPG)?
-    - TotV(\s*:)?\s*RPG
+    - Tales\s*of(\s*the)?\s*Valiant
+    - ['Tot?V', *the-rpg]
     ambiguous_matches:
     - Tot?V
 
   The Between:
     tags: system
     matches:
-    - The\s*Between(\s*:)?(\s*the)?\s*RPG
+    - [The\s*Between, *the-rpg]
     ambiguous_matches:
     - The\s*Between
 
   The Silt Verses:
     tags: system
     matches:
-    - (The\s*)?Silt\s*Verses(\s*:)?(\s*the)?\s*RPG
+    - ['(The\s*)?Silt\s*Verses', *the-rpg]
 
   The One Ring:
     tags: system
     matches:
-    - TOR(\s*:)?\s*RPG
+    - [TOR, *the-rpg]
     - The\s*One\s*Ring(\s*:)?\s*(RPG|Roleplaying)
     ambiguous_matches:
     - The\s*One\s*Ring
@@ -500,56 +499,58 @@ Game system:
   Thirsty Sword Lesbians:
     tags: system
     matches:
-    - TSL(\s*:)?\s*RPG
-    - Thirsty\s*Sword\s*Lesbians(RPG)?
+    - [TSL, *the-rpg]
+    - Thirsty\s*Sword\s*Lesbians
     ambiguous_matches:
     - TSL
 
   Top Secret:
     tags: system
     matches:
-    - '#TopSecret(RPG)?'
-    - Top\s*Secret(\s*:)?\s*RPG
+    - [Top\s*Secret, *the-rpg]
     ambiguous_matches:
     - Top\s*Secret
 
   Traveller:
+    .macros:
+      - &traveller Travell?er
     tags: system
     matches:
-    - '#Travell?er(RPG)?'
     - MgT2e?
-    - Mongoose\s*Travell?er(\s*2e)?
-    - Travell?er\s*2e
-    - Travell?er\s*RPG
+    - [Mongoose\s*, *traveller, '(\s*2e)?']
+    - [*traveller, \s*2e]
+    - [*traveller, *the-rpg]
     ambiguous_matches:
-    - Travell?er
+    - *traveller
 
   Trophy:
     tags: system
     matches:
-    - Trophy(\s*:)?\s*RPG
-    - Trophy\s*(Dark|Gold)((\s*:)?\s*RPG)?
+    - [Trophy, *the-rpg]
+    - Trophy\s*(Dark|Gold)
     ambiguous_matches:
     - Trophy
 
   Skyrealms of Jorune:
     tags: system
     matches:
-    - Jorune((\s*:)?\s*RPG)?
-    - Sky\s*realms\s*of\s*Jorune((\s*:)?\s*RPG)?
+    - Jorune
+    - Sky\s*realms\s*of\s*Jorune
 
   The Witcher:
+    .macro:
+      - &the-witcher The\s*Witcher
     tags: system
     matches:
-    - (The\s*)?Witcher(\s*:)\s*RPG
+    - [*the-witcher, *the-rpg]
     ambiguous_matches:
-    - (The\s*)Witcher
+    - *the-witcher
 
   Troika!:
     tags: system
     matches:
     - Troika!
-    - Troika(\s*:)?\s*RPG
+    - [Troika, *the-rpg]
     ambiguous_matches:
     - Troika
 
@@ -557,7 +558,7 @@ Game system:
     tags: system
     matches:
     - World of Darkness
-    - WoD(\s*:)?\s*RPG
+    - [WoD, *the-rpg]
     # Spanish
     - Mundo\s*de\s*Tinieblas
     ambiguous_matches:
@@ -592,4 +593,4 @@ Game system:
   FishBlade:
     tags: system
     matches:
-    - Fish\s*Blade((\s*:)?\s*RPG)?
+    - Fish\s*Blade

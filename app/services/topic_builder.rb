@@ -67,9 +67,13 @@ class TopicBuilder
   # is ambiguous or not.
   def patterns
     @patterns ||= begin
-      unambiguous_patterns = Array(attrs[:matches]).index_with { false }
-      ambiguous_patterns = Array(attrs[:ambiguous_matches]).index_with { true }
+      unambiguous_patterns = fold_patterns(attrs[:matches]).index_with { false }
+      ambiguous_patterns = fold_patterns(attrs[:ambiguous_matches]).index_with { true }
       unambiguous_patterns.merge(ambiguous_patterns)
     end
+  end
+
+  def fold_patterns(patterns)
+    Array(patterns).map { |pattern| Array(pattern).join }
   end
 end

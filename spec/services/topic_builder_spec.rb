@@ -61,6 +61,33 @@ RSpec.describe TopicBuilder do
         seeded_tags = seeded_topic.topic_tags.map(&:tag)
         expect(seeded_tags).not_to be_any(&:persisted?)
       end
+
+      context "when a term is an array" do
+        let(:attrs) do
+          term_type = %i[matches ambiguous_matches].sample
+          { term_type => [%w[foo bar]] }
+        end
+
+        it "folds the array into a string" do
+          expect(seeded_topic.terms.first.pattern).to eq "foobar"
+        end
+      end
+
+      # TODO: We should raise an error, but for now we'll just default to
+      #       ambiguous.
+      context "when a term appears as both an unambiguous and an ambiguous match" do
+        let(:attrs) do
+          { matches: %w[foo], ambiguous_matches: %w[foo] }
+        end
+
+        it "does not duplicate the term" do
+          expect(seeded_topic.terms.size).to eq 1
+        end
+
+        it "marks the term as ambiguous" do
+          expect(seeded_topic.terms.first).to be_ambiguous
+        end
+      end
     end
 
     context "when the topic does exist" do
