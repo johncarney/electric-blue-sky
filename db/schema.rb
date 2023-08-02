@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_02_001606) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_02_002449) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "pg_trgm"
@@ -25,6 +25,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_02_001606) do
     t.index ["record"], name: "index_posts_on_record", opclass: :jsonb_path_ops, using: :gin
     t.index ["repo"], name: "index_posts_on_repo"
     t.index ["uri"], name: "index_posts_on_uri", unique: true
+  end
+
+  create_table "terms", force: :cascade do |t|
+    t.bigint "topic_id", null: false
+    t.string "pattern", null: false
+    t.boolean "ambiguous", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["topic_id", "pattern"], name: "index_terms_on_topic_id_and_pattern", unique: true
+    t.index ["topic_id"], name: "index_terms_on_topic_id"
   end
 
   create_table "texts", force: :cascade do |t|
@@ -44,5 +54,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_02_001606) do
     t.index ["name"], name: "index_topics_on_name", unique: true
   end
 
+  add_foreign_key "terms", "topics"
   add_foreign_key "texts", "posts"
 end

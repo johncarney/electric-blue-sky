@@ -10,5 +10,7 @@
 #  updated_at :datetime         not null
 #
 class Topic < ApplicationRecord
+  has_many :terms, inverse_of: :topic, dependent: :destroy, autosave: true
+
   validates :name, presence: true, uniqueness: { case_sensitive: false }
 end
