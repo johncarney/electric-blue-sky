@@ -1,0 +1,595 @@
+---
+
+.macros:
+  - &the-rpg      (\s*:)?(\s*the)?\s*RPG
+  - &optional-rpg ((\s*:)?(\s*the)?\s*RPG)?
+
+General topic:
+  TTRPG feed meta-discussion:
+    tags: meta
+    matches:
+    - '#?TTRPG\s*Feed\s*Meta(\s*([-—]\s*)?(Discussion|Post))?'
+
+  Feed opt-out:
+    tags: meta
+    matches:
+    - '#?No(\s*TTRPGs?)?\s*Feed|\[\s*No(\s*TTRPGs?)?\s*Feed\s*\]'
+
+  Tabletop RPGs:
+    matches:
+    - '#?(TT|Table(-|\s*)top\s*)(RPG|Role-?playing\s*Game)s?'
+    - '#?Tabletop\s*Gam(er?s?|ing)'
+    - '#?Pen\s*(-?and-?|&)\s*paper\s*(RPG|Role-?playing\s*Game)s?'
+    # Spanish
+    - '#?Juegos\s*de\s*rol(\s*de\*mesa)?'
+
+# SHOWS
+
+Show:
+  Dimension 20:
+    tags: [actual-play, show, dimension20]
+    matches:
+    - Dimension\s*20
+
+  Dungeons & Drag Queens:
+    tags: [actual-play, show, dimension20]
+    matches:
+    - Dungeons\s*(&|and)\s*Drag(\s*Queens?)?
+    - D[&n]DQ
+
+  Candela Obscura:
+    tags: [actual-play, show, critical-role]
+    matches:
+    - Candela\s*Obscura
+
+  Critical Role:
+    tags: [actual-play, show, critical-role]
+    matches:
+    - Critical\s*Role
+    ambiguous_matches:
+    - CR
+    - Critters?
+
+  Glass Cannon Network:
+    tags: [actual-play, show, glass-cannon-network]
+    matches:
+    - Glass\s*Cannon\s*(Network|Pod(cast?))
+    ambiguous_matches:
+    - GCN
+    - Glass\s*Cannon
+
+  Children of Éarte:
+    tags: [actual-play, show, demiplane]
+    matches:
+    - Children\s*of\s*[ÉE]art[eé]
+    ambiguous_matches:
+    - Co[ÉE]
+
+  Relics & Rarities:
+    tags: [actual-play, show, geek-and-sundry]
+    matches:
+    - Relics\s*(&|and)\s*Rarities
+    ambiguous_matches:
+    - R[&n]R
+
+Game system:
+  Apocalypse World:
+    tags: system
+    matches:
+    - Apocalypse\*World
+
+  Basic Roleplaying:
+    tags: system
+    matches:
+    - Basic\s*Role(\s*(-\s*)?)playing
+    ambiguous_matches:
+    - BRP
+
+  Blades in the Dark:
+    tags: system
+    matches:
+    - BitD
+    - Blades\s*in\s*the\s*Dark
+
+  Brindlewood Bay:
+    tags: system
+    matches:
+    - Brindlewood\s*Bay
+
+  Bunnies & Burrows:
+    tags: system
+    matches:
+    - Bunnies\s*(and|&)\s*Burrows
+
+  Call of Cthulhu:
+    tags: system
+    matches:
+    - Call\s*of\s*Cthulhu
+    ambiguous_matches:
+    - CoC
+
+  Candela Obscura RPG:
+    tags: system
+    matches:
+    - Candela\s*Obscura(\s*:)?(\s*the)?RPG
+
+  CY_BORG:
+    tags: system
+    matches:
+    - '#?CY_BORG'
+
+  Mörk Borg:
+    tags: system
+    matches:
+    - '#?M[öo]rk\s*Borg'
+
+  Pirate Borg:
+    tags: system
+    matches:
+    - '#?Pirate\s*Borg'
+
+  Delta Green:
+    tags: system
+    matches:
+    - Delta\s*Green((\s*:)?RPG)?
+
+  DragonQuest:
+    tags: system
+    matches:
+    - DragonQuest((\s*:)?\s*RPG)?
+
+  Dungeon Crawl Classics:
+    tags: system
+    matches:
+    - DCC
+    - Dungeon\s*Crawl\s*Classics
+
+  Dungeon World:
+    tags: system
+    matches:
+    - Dungeon\s*World
+
+  EZD6:
+    tags: system
+    matches:
+    - EZ\s*D6((\s*:)?RPG)?
+
+  F.A.T.A.L.:
+    tags: [system, problematic]
+    matches:
+    - F\.?A\.?T\.?A\.?L\.?(\s*:)?\s*RPG
+    - F\.A\.T\.A\.L\.?
+
+  Fantasy AGE:
+    tags: system
+    matches:
+    - Fantasy\s*AGE
+
+  Forbidden Lands:
+    tags: system
+    matches:
+    - Forbidden\s*Lands
+
+  Forged in the Dark:
+    tags: system
+    matches:
+    - FitD
+    - Forged\s*in\s*the\s*Dark
+
+  Gamma World:
+    tags: system
+    matches:
+    - Gamma\s*World(RPG)?
+
+  Illuminated Worlds:
+    tags: system
+    matches:
+    - Illuminated\s*Worlds
+
+  Into the Odd:
+    tags: system
+    matches:
+    - Into\s*the\s*Odd
+
+  Lamentations of the Flame Princess:
+    tags: system
+    matches:
+    - Lamentations\s*of\s*the\s*Flame\s*Princess((\s*:)?RPG)?
+    - LoftFP((\s*:)?RPG)?
+
+  Neoclassical Geek Revival:
+    tags: system
+    matches:
+    - NGR((\s*:)?RPG)?
+    - Neoclassical\s*Geek\s*Revival((\s*:)?RPG)?
+
+  Old School Essentials:
+    tags: system
+    matches:
+    - OSE
+    - Old(-|\s*)School\s*Esentials
+
+  Old School Renaissance:
+    tags: system
+    matches:
+    - OSR
+    - Old(-|\s*)School\s*(Renaissance|Revival)
+
+  Powered by the Apocalypse:
+    tags: system
+    matches:
+    - PbtA
+    - Powered\s*by\s*the\s*Apocalypse
+
+  Public Access:
+    tags: system
+    matches:
+    - '#?Public\s*Access(\s*:)?(\s*the)?\s*RPG'
+
+  RuneQuest:
+    tags: system
+    matches:
+    - RuneQuest((\s*:)?RPG)?
+
+  Savage Worlds:
+    tags: system
+    matches:
+    - SW(ADE|D)
+    - Savage\s*Worlds
+
+  Shadowdark:
+    tags: system
+    matches:
+    - Shadowdark(RPG)?
+
+  Star Frontiers:
+    tags: system
+    matches:
+    - Star\s*Frontiers
+
+  Starfinder:
+    tags: system
+    matches:
+    - Starfinder(RPG)?
+
+  Stars Without Number:
+    tags: system
+    matches:
+    - Stars\s*Without\s*Number
+
+  Symbaroum:
+    tags: system
+    matches:
+    - Symbaroum(RPG)?
+
+  Tunnels & Trolls:
+    tags: system
+    matches:
+    - Tunnels\s*(and|&)\s*Trolls
+
+  'Twilight: 2000':
+    tags: system
+    matches:
+    - Twilight:?\s*2000(RPG)?
+
+  Urban Shadows:
+    tags: system
+    matches:
+    - Urban\s*Shadows
+
+  Vaesen:
+    tags: system
+    matches:
+    - Vaesen(RPG)?
+
+  "Vampire: the Masquerade":
+    tags: system
+    matches:
+    - V:?tM(?!B)
+    - Vamily
+    - Vampire:?\s*the\s*Masquerade(?!(\s*[-:—])*\s*Bloodlines)
+
+  Vast Grimm:
+    tags: system
+    matches:
+    - Vast\s*Grimm(\s*RPG)?
+
+  Wanderhome:
+    tags: system
+    matches:
+    - Wanderhome((\s*:)?\s*RPG)?
+
+  World of Dungeons:
+    tags: system
+    matches:
+    - World\s*of\s*Dungeons
+
+  Worlds Without Number:
+    tags: system
+    matches:
+    - Worlds\s*Without\s*Number
+
+  Zweihänder:
+    tags: system
+    matches:
+    - Zweih[aä]nder(\s*:)?\s*RPG
+    ambiguous_matches:
+    - Zweih[aä]nder
+
+  Dungeons & Dragons:
+    tags: system
+    matches:
+    - (3\.)?5e
+    - (Advanced\s*)?Dungeons\s*(and|&)\s*Dragons(\s*[12345]e?)?(?!:?:\s*(\(\s*)?(Honou?r\s*Among\s*Thieves|(the\s*)?Movie))
+    - A?D[&n]D((\s*:)?\s*([1245]|3(\.5))e?)?
+    # Spanish
+    - Dragones\s*y\s*Mazmorras
+    - DyD
+
+  Alien:
+    tags: system
+    matches:
+    - Alien(\s*:)?\s*RPG
+    ambiguous_matches:
+    - Alien
+
+  Bladerunner:
+    tags: system
+    matches:
+    - Bladerunner(\s*:)?(\s*the)?\s*RPG
+    ambiguous_matches:
+    - Bladerunner
+
+  Blue Planet:
+    tags: system
+    matches:
+    - Blue\s*Planet(\s*:)?\s*Recontact
+    - Blue\s*Planet(\s*:)?(\s*the)?\s*RPG
+    ambiguous_matches:
+    - Blue\s*Planet
+
+  Cairn:
+    tags: system
+    matches:
+    - Cairn\s*(:?\s*RPG|2e)
+    ambiguous_matches:
+    - Cairn(RPG|2e?)?
+
+  Cepheus Engine:
+    tags: system
+    matches:
+    - Cepheus\s*(RPG|Engine|Deluxe)
+    ambiguous_matches:
+    - Cepheus(RPG|Engine|Deluxe)?
+
+  Coyote & Crow:
+    tags: system
+    matches:
+    - C[&n]C(\s*:)?\s*RPG
+    - Coyote\s*(&|and)\s*Crow((\s*:)?\s*RPG)?
+    ambiguous_matches:
+    - C[&n]C
+
+  Cyberpunk:
+    tags: system
+    matches:
+    - Cyberpunk\s*(2020|Red|(\s*:)?\s*RPG)
+    ambiguous_matches:
+    - Cyberpunk(2020|Red)?
+
+  Death in Space:
+    tags: system
+    matches:
+    - Death\s*in\s*Space(\s*:)?\s*RPG
+    ambiguous_matches:
+    - Death\s*in\s*Space
+
+  Daggerheart:
+    tags: system
+    matches:
+    - Daggerheart(\s*:)?\s*RPG
+    ambiguous_matches:
+    - Daggerheart
+
+  Dragonbane:
+    tags: system
+    matches:
+    - Dragonbane(\s*:)?\s*RPG
+    ambiguous_matches:
+    - Dragonbane
+
+  Five Torches Deep:
+    tags: system
+    matches:
+    - (Five|5)\s*Torches\s*Deep
+    - 5TD(RPG)?
+    - FTD(\s*:)?\s*RPG
+    ambiguous_matches:
+    - FTD
+
+  Knave:
+    tags: system
+    matches:
+    - Knave\s*((\s*:)?\s*RPG|[12]e?)
+    ambiguous_matches:
+    - Knave
+
+  Lancer:
+    tags: system
+    matches:
+    - Lancer(\s*:)?\s*RPG
+    ambiguous_matches:
+    - Lancer
+
+  Lord of the Rings:
+    tags: system
+    matches:
+    - Lord\s*of\s*the\s*Rings(\s*:)?\s*(RPG|Roleplaying|5E)
+    - LotR(\s*:)?\s*RPG
+    ambiguous_matches:
+    - Lord\s*of\s*the\s*Rings(RPG|Roleplaying|5E)?
+    - LotR
+
+  Paranoia:
+    tags: system
+    matches:
+    - Paranoia(\s*:)?\s*RPG
+    ambiguous_matches:
+    - Paranoia
+
+  Pathfinder:
+    tags: system
+    matches:
+    - PF(\s*:)?\s*[12]e?
+    - Pathfinder((\s*:)?\s*(RPG|[12]e?))?
+    ambiguous_matches:
+    - PF
+
+  Root:
+    tags: system
+    matches:
+    - Root(\s*:)?(\s*the)?\s*RPG
+    ambiguous_matches:
+    - Root
+
+  Shadowrun:
+    tags: system
+    matches:
+    - Shadowrun(?!(\s*[-:—])*\s*(Dragonfall|Hong\s*Kong|Returns|SNES|Sega\*Genesis))
+    - Shadowrun(\s*:)?\s*RPG
+    ambiguous_matches:
+    - Shadowrun
+
+  Tales from the Loop:
+    tags: system
+    matches:
+    - Tales\s*from\s*the\s*Loop(\s*:)?\s*RPG
+    - TftL(\s*:)?\s*RPG
+    ambiguous_matches:
+    - Tales\s*from\s*the\s*Loop
+    - TftL
+
+  Tales of the Valiant:
+    tags: system
+    matches:
+    - Tales\s*of(\s*the)?\s*Valiant((\s*:)?\s*RPG)?
+    - TotV(\s*:)?\s*RPG
+    ambiguous_matches:
+    - Tot?V
+
+  The Between:
+    tags: system
+    matches:
+    - The\s*Between(\s*:)?(\s*the)?\s*RPG
+    ambiguous_matches:
+    - The\s*Between
+
+  The Silt Verses:
+    tags: system
+    matches:
+    - (The\s*)?Silt\s*Verses(\s*:)?(\s*the)?\s*RPG
+
+  The One Ring:
+    tags: system
+    matches:
+    - TOR(\s*:)?\s*RPG
+    - The\s*One\s*Ring(\s*:)?\s*(RPG|Roleplaying)
+    ambiguous_matches:
+    - The\s*One\s*Ring
+
+  Thirsty Sword Lesbians:
+    tags: system
+    matches:
+    - TSL(\s*:)?\s*RPG
+    - Thirsty\s*Sword\s*Lesbians(RPG)?
+    ambiguous_matches:
+    - TSL
+
+  Top Secret:
+    tags: system
+    matches:
+    - '#TopSecret(RPG)?'
+    - Top\s*Secret(\s*:)?\s*RPG
+    ambiguous_matches:
+    - Top\s*Secret
+
+  Traveller:
+    tags: system
+    matches:
+    - '#Travell?er(RPG)?'
+    - MgT2e?
+    - Mongoose\s*Travell?er(\s*2e)?
+    - Travell?er\s*2e
+    - Travell?er\s*RPG
+    ambiguous_matches:
+    - Travell?er
+
+  Trophy:
+    tags: system
+    matches:
+    - Trophy(\s*:)?\s*RPG
+    - Trophy\s*(Dark|Gold)((\s*:)?\s*RPG)?
+    ambiguous_matches:
+    - Trophy
+
+  Skyrealms of Jorune:
+    tags: system
+    matches:
+    - Jorune((\s*:)?\s*RPG)?
+    - Sky\s*realms\s*of\s*Jorune((\s*:)?\s*RPG)?
+
+  The Witcher:
+    tags: system
+    matches:
+    - (The\s*)?Witcher(\s*:)\s*RPG
+    ambiguous_matches:
+    - (The\s*)Witcher
+
+  Troika!:
+    tags: system
+    matches:
+    - Troika!
+    - Troika(\s*:)?\s*RPG
+    ambiguous_matches:
+    - Troika
+
+  World of Darkness:
+    tags: system
+    matches:
+    - World of Darkness
+    - WoD(\s*:)?\s*RPG
+    # Spanish
+    - Mundo\s*de\s*Tinieblas
+    ambiguous_matches:
+    # Spanish
+    - MdT
+
+  # Spanish
+  Aquelarre:
+    tags: system
+    matches:
+    - Aquelarre
+
+  # Spanish
+  Caucho y Chromo:
+    tags: system
+    matches:
+    - Caucho\s*y\s*Chromo
+
+  # Spanish
+  El Resurgir del Dragón:
+    tags: system
+    matches:
+    - El\s*Resurgir\s*del\s*Drag[oó]n
+    - ERDD
+
+  # Spanish
+  Cultos Innombrables:
+    tags: system
+    matches:
+    - Cultos\s*Innombrables
+
+  FishBlade:
+    tags: system
+    matches:
+    - Fish\s*Blade((\s*:)?\s*RPG)?
