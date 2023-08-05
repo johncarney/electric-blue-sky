@@ -68,7 +68,7 @@ RSpec.describe Term, type: :model do
 
     it "returns only ambiguous terms" do
       terms.shuffle.each(&:save!)
-      expect(ambiguous_terms).to match_array(terms.select(&:ambiguous?))
+      expect(ambiguous_terms).to match_array terms.select(&:ambiguous?)
     end
   end
 
@@ -82,7 +82,66 @@ RSpec.describe Term, type: :model do
 
     it "returns only unambiguous terms" do
       terms.shuffle.each(&:save!)
-      expect(unambiguous_terms).to match_array(terms.select(&:unambiguous?))
+      expect(unambiguous_terms).to match_array terms.select(&:unambiguous?)
+    end
+  end
+
+  describe ".grouped_patterns" do
+    subject(:grouped_patterns) { described_class.grouped_patterns }
+
+    let(:patterns) { Faker::Lorem.unique.words(number: 3) }
+
+    let(:terms) do
+      topic = create :topic
+      patterns.map { |pattern| build :term, topic:, pattern: }
+    end
+
+    before do
+      terms.shuffle.each(&:save!)
+    end
+
+    matcher :be_valid_regex do
+      match do |actual|
+        /#{actual}/i
+      rescue RegexpError => e
+        @exception = e
+        false
+      end
+
+      failure_message do |actual|
+        "expected #{actual} to be a valid regular expression, but got #{@exception}"
+      end
+    end
+
+    it "returns valid regular expressions" do
+      expect(grouped_patterns).to all be_valid_regex
+    end
+
+    it "returns regular expressions enclosed in groups named by each term's id" do
+      expected_patterns = terms.map { |term| "(?<+#{term.id}>#{term.pattern})" }
+      expect(grouped_patterns).to match_array expected_patterns
+    end
+  end
+
+  describe ".postgres_pattern" do
+    subject(:postgres_pattern) { term_scope.postgres_pattern }
+
+    let(:term_scope) { described_class.order(described_class.length.desc, described_class[:pattern].asc) }
+
+    let(:patterns) { Faker::Lorem.unique.words(number: 3) }
+
+    let(:terms) do
+      topic = create :topic
+      patterns.map { |pattern| build :term, topic:, pattern: }
+    end
+
+    before do
+      terms.shuffle.each(&:save!)
+    end
+
+    it "returns a PostgreSQL-compatible regular expression combining all terms" do
+      expected_pattern = ['\m(', *term_scope.pluck(:pattern).join("|"), ')\M'].join
+      expect(postgres_pattern).to eq expected_pattern
     end
   end
 end

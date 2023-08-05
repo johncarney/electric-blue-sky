@@ -14,12 +14,13 @@
 class Term < ApplicationRecord
   belongs_to :topic, inverse_of: :terms
 
-  scope :matching, ->(term) { where("? ~* CONCAT('\\A', pattern, '\\Z')", term) }
+  scope :matching, lambda { |term|
+    regexp = ArelTools.concat('\A', arel_table[:pattern], '\Z')
+    where(ArelTools.quoted(term).matches_regexp(regexp, false))
+  }
 
   scope :ambiguous,   -> { where(ambiguous: true) }
   scope :unambiguous, -> { where(ambiguous: false) }
-
-  scope :order_by_length, ->(asc_or_desc = :asc) { order(Arel.sql("LENGTH(pattern) #{asc_or_desc.to_s.upcase}")) }
 
   validates :pattern, presence: true, uniqueness: true
 
@@ -29,6 +30,19 @@ class Term < ApplicationRecord
     !ambiguous?
   end
 
+  class << self
+    def grouped_patterns
+      pluck(ArelTools.concat("(?<+", arel_table[:id], ">", arel_table[:pattern], ")"))
+    end
+
+    def postgres_pattern
+      ['\m(', pluck(:pattern).join("|"), ')\M'].join
+    end
+
+    def length
+      ArelTools.length(arel_table[:pattern])
+    end
+  end
 
   private
 

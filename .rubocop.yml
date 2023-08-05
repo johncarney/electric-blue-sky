@@ -22,6 +22,7 @@ AllCops:
     - config/puma.rb
     - tmp/**/*
     - db/schema.rb
+    - utilities/**/*
 
 FactoryBot/ConsistentParenthesesStyle:
   Enabled: false
@@ -59,12 +60,7 @@ RSpec/Rails/InferredSpecType:
   Enabled: false
 
 Style/Documentation:
-  Exclude:
-    - app/helpers/application_helper.rb
-    - app/mailers/application_mailer.rb
-    - app/models/application_record.rb
-    - config/application.rb
-    - db/migrate/*.rb
+  Enabled: false
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
