@@ -594,3 +594,53 @@ Game system:
     tags: system
     matches:
     - Fish\s*Blade
+
+  Monster of the Week:
+    tags: system
+    matches:
+    - Monster\s*of\s*the\s*Week
+    - MotW
+
+  Carved from Brindlewood:
+    tags: system
+    matches:
+    - Carved\s*from\s*Brindlewood
+    - [CfB, *the-rpg]
+    ambiguous_matches:
+    - CfB
+
+  GURPS:
+    tags: system
+    matches:
+    - Generic Universal RolePlaying System
+    - GURPS
+
+  Stoneburner:
+    tags: system
+    matches:
+    - Stoneburner
+
+  Tales of the Burned Stones:
+    tags: system
+    matches:
+    - Tales\s*of\s*the\s*Burned\s*Stones
+    - TotBS
+
+  Basic Fantasy Role-Playing Game:
+    tags: system
+    matches:
+    - Basic\s*Fantasy\s*Role(-|\s*)Playing\s*Game
+    - Basic\s*Fantasy\s*RPG
+    - BFRPG
+
+  Breathless:
+    tags: system
+    matches:
+    - [Breathless, *the-rpg]
+    - Breathless\s*(Games?|Jam)
+
+  City of Mist:
+    tags: system
+    matches:
+    - City\s*of\s*Mist
+
