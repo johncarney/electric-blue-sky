@@ -16,9 +16,19 @@ class Term < ApplicationRecord
 
   scope :matching, ->(term) { where("? ~* CONCAT('\\A', pattern, '\\Z')", term) }
 
+  scope :ambiguous,   -> { where(ambiguous: true) }
+  scope :unambiguous, -> { where(ambiguous: false) }
+
+  scope :order_by_length, ->(asc_or_desc = :asc) { order(Arel.sql("LENGTH(pattern) #{asc_or_desc.to_s.upcase}")) }
+
   validates :pattern, presence: true, uniqueness: true
 
   validate :pattern_is_valid_regex
+
+  def unambiguous?
+    !ambiguous?
+  end
+
 
   private
 
