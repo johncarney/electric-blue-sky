@@ -10,11 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_02_051402) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_05_224847) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
+
+  create_table "matched_terms", force: :cascade do |t|
+    t.bigint "text_id", null: false
+    t.bigint "term_id", null: false
+    t.string "matched_text", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["term_id"], name: "index_matched_terms_on_term_id"
+    t.index ["text_id", "term_id", "matched_text"], name: "index_matched_terms_on_text_id_and_term_id_and_matched_text", unique: true
+    t.index ["text_id"], name: "index_matched_terms_on_text_id"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string "uri", null: false
@@ -71,6 +82,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_02_051402) do
     t.index ["name"], name: "index_topics_on_name", unique: true
   end
 
+  add_foreign_key "matched_terms", "terms"
+  add_foreign_key "matched_terms", "texts"
   add_foreign_key "terms", "topics"
   add_foreign_key "texts", "posts"
   add_foreign_key "topic_tags", "tags"

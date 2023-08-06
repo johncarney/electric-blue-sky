@@ -22,6 +22,9 @@ class Text < ApplicationRecord
 
   belongs_to :post, inverse_of: :texts
 
+  has_many :matched_terms, inverse_of: :text, dependent: :delete_all, autosave: true
+  has_many :terms, through: :matched_terms
+
   scope :primary, -> { where(text_type: PRIMARY) }
   scope :alt,     -> { where(text_type: ALT) }
 
