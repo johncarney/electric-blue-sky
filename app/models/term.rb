@@ -35,7 +35,9 @@ class Term < ApplicationRecord
 
   class << self
     def grouped_patterns
-      pluck(ArelTools.concat("(?<+", arel_table[:id], ">", arel_table[:pattern], ")"))
+      pattern = arel_table[:pattern]
+      order(ArelTools.length(pattern).desc, pattern.asc)
+        .pluck(ArelTools.concat("(?<+", arel_table[:id], ">", pattern, ")"))
     end
 
     def postgres_pattern

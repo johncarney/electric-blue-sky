@@ -23,4 +23,20 @@ class Topic < ApplicationRecord
   scope :by_name_or_term, ->(name_or_term) { joins(:terms).by_name(name_or_term).or(by_term(name_or_term)) }
 
   validates :name, presence: true, uniqueness: { case_sensitive: false }
+
+  def matching_texts(text_scope: Text.all)
+    text_scope.where("text ~* ?", terms.order(Term.length.desc).postgres_pattern)
+  end
+
+  def index_texts(text_scope:)
+    unambiguous_pattern = /\b(#{Term.unambiguous.order(Term.length.desc).pluck(:pattern).join("|")})\b/i
+    # topic_patterns = terms.pluck(Arel.sql("CONCAT('(?<+', terms.id, '>', pattern, ')')"))
+    matches = text_scope.map do |text|
+      next unless text.text.match?(unambiguous_pattern)
+
+      text.text
+      # text.terms << terms.select { |term| text.text =~ term.pattern }
+    end.compact_blank
+    puts matches.join("\n----------------\n") # rubocop:todo Rails/Output
+  end
 end
