@@ -1,7 +1,7 @@
 ---
 
 .macros:
-  - &the-rpg (\s*:)?(\s*the)?\s*RPG
+  - &the-rpg (\s*:)?(\s*the)?\s*(TT)?RPG
 
 General topic:
   TTRPG feed meta-discussion:
