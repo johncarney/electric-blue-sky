@@ -691,6 +691,11 @@ Game systems:
     matches:
     - Mausr[ií]tter
 
+  DUKK BÖRG:
+    tags: system
+    matches:
+    - DUKK\s*B[ÖO]RG
+
 Video games:
   Baldur's Gate:
     tags: [video game, dungeons and dragons]
