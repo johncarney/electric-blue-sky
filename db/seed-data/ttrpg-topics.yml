@@ -714,6 +714,19 @@ Game systems:
     ambiguous_matches:
     - Mouse\s*Guard
 
+  Star Trek Adventures:
+    tags: system
+    matches:
+    - Star\s*Trek\s*Adventures
+    ambiguous_matches:
+    - STA
+
+  Star Trek the Role Playing Game:
+    tags: system
+    matches:
+    - [Star\s*Trek, *the-rpg]
+    - Star\s*Trek(\s*:)?(\s*the)?\s*Role(-|\s*)Playing\s*Game
+
 Video games:
   Baldur's Gate:
     tags: [video game, dungeons and dragons]
