@@ -701,6 +701,11 @@ Game systems:
     matches:
     - Monsterhearts?(\s*\d+)?
 
+  Bluebeard's Bride:
+    tags: system
+    matches:
+    - Bluebeard'?s\s*Bride
+
 Video games:
   Baldur's Gate:
     tags: [video game, dungeons and dragons]
