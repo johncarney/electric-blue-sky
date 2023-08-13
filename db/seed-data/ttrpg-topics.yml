@@ -33,27 +33,25 @@ General topic:
     # Spanish
     - '#?Juegos\s*de\s*rol(\s*de\*mesa)?'
 
-# SHOWS
-
-Show:
+Shows:
   Dimension 20:
-    tags: [actual-play, show, dimension20]
+    tags: [actual play, show, dimension20, dungeons and dragons]
     matches:
     - Dimension\s*20
 
   Dungeons & Drag Queens:
-    tags: [actual-play, show, dimension20]
+    tags: [actual play, show, dimension20, dungeons and dragons]
     matches:
     - Dungeons\s*(&|and)\s*Drag(\s*Queens?)?
     - D[&n]DQ
 
   Candela Obscura:
-    tags: [actual-play, show, critical-role]
+    tags: [actual play, show, critical role]
     matches:
     - Candela\s*Obscura
 
   Critical Role:
-    tags: [actual-play, show, critical-role]
+    tags: [actual play, show, critical role, dungeons and dragons]
     matches:
     - Critical\s*Role
     ambiguous_matches:
@@ -61,7 +59,7 @@ Show:
     - Critters?
 
   Glass Cannon Network:
-    tags: [actual-play, show, glass-cannon-network]
+    tags: [actual play, show, glass cannon network]
     matches:
     - Glass\s*Cannon\s*(Network|Pod(cast?))
     ambiguous_matches:
@@ -69,20 +67,20 @@ Show:
     - Glass\s*Cannon
 
   Children of Éarte:
-    tags: [actual-play, show, demiplane]
+    tags: [actual play, show, demiplane, dungeons and dragons]
     matches:
     - Children\s*of\s*[ÉE]art[eé]
     ambiguous_matches:
     - Co[ÉE]
 
   Relics & Rarities:
-    tags: [actual-play, show, geek-and-sundry]
+    tags: [actual play, show, geek and sundry, dungeons and dragons]
     matches:
     - Relics\s*(&|and)\s*Rarities
     ambiguous_matches:
     - R[&n]R
 
-Game system:
+Game systems:
   Apocalypse World:
     tags: system
     matches:
@@ -327,7 +325,7 @@ Game system:
     - Zweih[aä]nder
 
   Dungeons & Dragons:
-    tags: system
+    tags: [system, dungeons and dragons]
     matches:
     - (3\.)?5e
     - (Advanced\s*)?Dungeons\s*(and|&)\s*Dragons(\s*[12345]e?)?(?!:?:\s*(\(\s*)?(Honou?r\s*Among\s*Thieves|(the\s*)?Movie))
@@ -448,7 +446,7 @@ Game system:
     - Paranoia
 
   Pathfinder:
-    tags: system
+    tags: [system, pathfinder]
     matches:
     - PF(\s*:)?\s*[12]e?
     - Pathfinder((\s*:)?\s*(RPG|[12]e?))?
