@@ -706,6 +706,14 @@ Game systems:
     matches:
     - Bluebeard'?s\s*Bride
 
+  Mouse Guard Roleplaying Game:
+    tags: system
+    matches:
+    - [Mouse\s*Guard, *the-rpg]
+    - Mouse\*Guard(\s*:)?(\s*the)?\s*Role(-|\s*)playing(\s*Game)?
+    ambiguous_matches:
+    - Mouse\s*Guard
+
 Video games:
   Baldur's Gate:
     tags: [video game, dungeons and dragons]
