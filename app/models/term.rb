@@ -16,6 +16,7 @@ class Term < ApplicationRecord
 
   has_many :matched_terms, inverse_of: :term, dependent: :delete_all, autosave: true
   has_many :texts, through: :matched_terms
+  has_many :posts, through: :texts
 
   scope :matching, lambda { |term|
     regexp = ArelTools.concat('\A', arel_table[:pattern], '\Z')

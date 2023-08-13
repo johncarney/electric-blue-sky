@@ -10,9 +10,6 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-#
-# Joins tags to topics.
-#
 class TopicTag < ApplicationRecord
   belongs_to :topic, inverse_of: :topic_tags
   belongs_to :tag,   inverse_of: :topic_tags

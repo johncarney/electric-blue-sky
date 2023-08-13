@@ -18,6 +18,9 @@
 class Post < ApplicationRecord
   has_many :texts, inverse_of: :post, dependent: :destroy, autosave: true
 
+  has_many :terms, through: :texts
+  has_many :topics, through: :terms
+
   serialize :record, PostRecordSerializer
 
   validates :uri, :repo, presence: true

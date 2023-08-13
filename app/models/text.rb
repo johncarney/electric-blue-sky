@@ -24,6 +24,7 @@ class Text < ApplicationRecord
 
   has_many :matched_terms, inverse_of: :text, dependent: :delete_all, autosave: true
   has_many :terms, through: :matched_terms
+  has_many :topics, through: :terms
 
   scope :primary, -> { where(text_type: PRIMARY) }
   scope :alt,     -> { where(text_type: ALT) }
