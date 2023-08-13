@@ -686,6 +686,11 @@ Game systems:
     ambiguous_matches:
     - FKR
 
+  Mausrítter:
+    tags: system
+    matches:
+    - Mausr[ií]tter
+
 Video games:
   Baldur's Gate:
     tags: [video game, dungeons and dragons]
