@@ -651,6 +651,16 @@ Game systems:
     matches:
     - City\s*of\s*Mist
 
+  Palladium Fantasy Role-Playing Game:
+    tags: system
+    matches:
+    - [Palladium, *the-rpg]
+    - Palladium\s*Fantasy
+    - (The\s*)?Palladium(\s*Fantasy)?(RPG|\s*Role-?Playing(\s*Game)?)
+    - PF?RPG
+    ambiguous_matches:
+    - Palladium
+
 Video games:
   Baldur's Gate:
     tags: [video game, dungeons and dragons]
