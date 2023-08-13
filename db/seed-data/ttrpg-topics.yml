@@ -661,6 +661,14 @@ Game systems:
     ambiguous_matches:
     - Palladium
 
+  New School Revolution:
+    tags: system
+    matches:
+    - New\s*School\s*Revolution
+    - [NSR, *the-rpg]
+    ambiguous_matches:
+    - NSR
+
 Video games:
   Baldur's Gate:
     tags: [video game, dungeons and dragons]
