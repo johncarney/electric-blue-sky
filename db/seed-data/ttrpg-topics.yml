@@ -8,6 +8,17 @@ General topic:
     tags: meta
     matches:
     - '#?TTRPG\s*Feed\s*Meta(\s*([-—]\s*)?(Discussion|Post))?'
+    - '#?TTRPGs?\s*Feeds?'
+
+  No TTRPG Stats:
+    tags: meta
+    matches:
+    - '#?No(\s*TTRPGs?)?\s*Stats'
+
+  TTRPG Stats:
+    tags: meta
+    matches:
+    - '#?TTRPGs?\s*Stats'
 
   Feed opt-out:
     tags: meta
