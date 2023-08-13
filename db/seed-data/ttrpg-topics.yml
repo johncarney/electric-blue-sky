@@ -678,6 +678,14 @@ Game systems:
     ambiguous_matches:
     - POSR
 
+  Free Kriegsspiel Revolution:
+    tags: system
+    matches:
+    - Free\s*Kriegsspiel\s*Revolution
+    - [FKR, *the-rpg]
+    ambiguous_matches:
+    - FKR
+
 Video games:
   Baldur's Gate:
     tags: [video game, dungeons and dragons]
