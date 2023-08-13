@@ -651,3 +651,20 @@ Game systems:
     matches:
     - City\s*of\s*Mist
 
+Video games:
+  Baldur's Gate:
+    tags: [video game, dungeons and dragons]
+    matches:
+    - Baldur'?s\s*Gate(\s*3)?
+    - Bauld[ue]r'?s\s*Gate(\s*3)?
+    - Bladur’?s\s*Gate(\s*3)?
+    - Bald\s*Man'?s\s*Gate(\s*3)?
+    - BG3
+
+  "Pathfinder: Wrath of the Righteous":
+    tags: [video game, pathfinder]
+    matches:
+    - Pathfinder(\s*:)?\s*Wrath\s*of\s*the\s*Righteous
+    - Wrath\s*of\s*the\s*Righteous
+    - Pathfinder(\s*:)?\s*WotR
+    - WotR
