@@ -42,7 +42,9 @@ class Term < ApplicationRecord
     end
 
     def postgres_pattern
-      ['\m(', pluck(:pattern).join("|"), ')\M'].join
+      pattern = arel_table[:pattern]
+      terms_patterns = order(ArelTools.length(pattern).desc, pattern.asc)
+      ['\m(', terms_patterns.pluck(:pattern).join("|"), ')\M'].join
     end
 
     def length
