@@ -258,7 +258,7 @@ Game systems:
   Starfinder:
     tags: system
     matches:
-    - Starfinder
+    - Starfinder(\s*[12]e?)?
 
   Stars Without Number:
     tags: system
