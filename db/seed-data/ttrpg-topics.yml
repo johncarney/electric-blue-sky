@@ -338,8 +338,6 @@ Game systems:
     tags: system
     matches:
     - [Alien, *the-rpg]
-    ambiguous_matches:
-    - Alien
 
   Bladerunner:
     tags: system
