@@ -669,6 +669,15 @@ Game systems:
     ambiguous_matches:
     - NSR
 
+  Post-Old School Renaissance:
+    tags: system
+    matches:
+    - Post(-|\s*)Old\s*School\s*(Renaissance|Revolution)
+    - Post-OSR
+    - [POSR, *the-rpg]
+    ambiguous_matches:
+    - POSR
+
 Video games:
   Baldur's Gate:
     tags: [video game, dungeons and dragons]
