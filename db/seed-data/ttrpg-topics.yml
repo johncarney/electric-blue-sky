@@ -696,6 +696,11 @@ Game systems:
     matches:
     - DUKK\s*B[ÖO]RG
 
+  Monsterhearts:
+    tags: system
+    matches:
+    - Monsterhearts?(\s*\d+)?
+
 Video games:
   Baldur's Gate:
     tags: [video game, dungeons and dragons]
